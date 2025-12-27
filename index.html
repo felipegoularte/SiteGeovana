@@ -58,8 +58,8 @@
         }
 
         .logo-circle {
-            width: 220px;
-            height: 220px;
+            width: 250px;
+            height: 250px;
             background-color: var(--branco);
             border-radius: 50%;
             margin: 0 auto 25px;
@@ -69,7 +69,8 @@
             box-shadow: 0 10px 30px rgba(216, 167, 160, 0.15);
             border: 1px solid var(--rosa-suave);
             position: relative;
-            padding: 20px;
+            padding: 15px;
+            overflow: hidden;
         }
 
         .logo-circle img {
@@ -77,13 +78,23 @@
             max-height: 100%;
             object-fit: contain;
             border-radius: 50%;
+            display: block;
+        }
+
+        /* Fallback se a imagem não carregar */
+        .logo-fallback {
+            display: none;
+            text-align: center;
+            color: var(--rosa-acento);
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
         .logo-circle::after {
             content: "";
             position: absolute;
-            width: 240px;
-            height: 240px;
+            width: 270px;
+            height: 270px;
             border-radius: 50%;
             border: 2px dashed var(--rosa-acento);
             opacity: 0.3;
@@ -412,8 +423,8 @@
             }
             
             .logo-circle {
-                width: 180px;
-                height: 180px;
+                width: 200px;
+                height: 200px;
             }
         }
 
@@ -427,8 +438,8 @@
             }
             
             .logo-circle {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
             }
             
             header {
@@ -442,8 +453,13 @@
     <header id="home">
         <div class="logo-container">
             <div class="logo-circle">
-                <!-- SUA LOGO AQUI -->
-                <img src="5 (1).png" alt="Dra. Geovana Senn - Fisioterapeuta Pélvica">
+                <!-- SUA LOGO - o código tenta vários nomes -->
+                <img id="logo-img" src="logo.png.png" alt="Dra. Geovana Senn - Fisioterapeuta Pélvica">
+                <div id="logo-fallback" class="logo-fallback">
+                    <i class="fas fa-spa" style="font-size: 60px; margin-bottom: 15px;"></i><br>
+                    Dra. Geovana Senn<br>
+                    <small>Fisioterapia Pélvica</small>
+                </div>
             </div>
             <h1 class="titulo-principal">Dra. Geovana Senn</h1>
             <p class="subtitulo">Fisioterapia Pélvica e Obstétrica</p>
@@ -581,6 +597,51 @@
     </footer>
 
     <script>
+        // Sistema que tenta vários nomes para a logo
+        const logo = document.getElementById('logo-img');
+        const fallback = document.getElementById('logo-fallback');
+        
+        // Lista de possíveis nomes para a logo
+        const possibleLogoNames = [
+            'logo.png.png',      // Nome atual
+            'logo.png',          // Sem dupla extensão
+            'geovana-logo.png',  // Outro nome comum
+            'Logo.png',          // Com L maiúsculo
+            'geovana_logo.png',  // Com underline
+            'logotipo.png',      // Nome em português
+            'dra-geovana-logo.png' // Outra possibilidade
+        ];
+        
+        // Função para tentar carregar a logo
+        function tryNextLogo(currentIndex) {
+            if (currentIndex < possibleLogoNames.length - 1) {
+                // Tenta o próximo nome da lista
+                logo.src = possibleLogoNames[currentIndex + 1];
+            } else {
+                // Se todas falharem, mostra o fallback
+                logo.style.display = 'none';
+                fallback.style.display = 'block';
+                console.log('Logo não encontrada. Mostrando fallback.');
+            }
+        }
+        
+        // Quando a imagem falhar ao carregar
+        logo.onerror = function() {
+            // Descobre qual nome estávamos tentando
+            const currentSrc = this.src;
+            const currentName = currentSrc.split('/').pop();
+            const currentIndex = possibleLogoNames.indexOf(currentName);
+            
+            // Tenta o próximo nome
+            tryNextLogo(currentIndex);
+        };
+        
+        // Quando a imagem carregar com sucesso
+        logo.onload = function() {
+            console.log('Logo carregada com sucesso:', this.src);
+            fallback.style.display = 'none';
+        };
+        
         // Suavizar rolagem dos links âncora
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
