@@ -23,19 +23,34 @@
       line-height: 1.7;
     }
 
-    /* HEADER COM LOGO EM BACKGROUND */
+    /* HEADER */
     header {
-      background:
-        url("logo-geovana.png") no-repeat center/380px,
-        var(--fundo-claro);
-      padding: 160px 20px 120px;
+      padding: 120px 20px 100px;
       text-align: center;
+      background: var(--fundo-claro);
+    }
+
+    /* CONTAINER DO LOGO (resolve o problema) */
+    .logo-box {
+      background: #fff;
+      padding: 30px;
+      display: inline-block;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.05);
+      margin-bottom: 30px;
+    }
+
+    .logo-box img {
+      width: 260px;
+      max-width: 90%;
+      display: block;
+      margin: auto;
     }
 
     header h1 {
       font-size: 2.8rem;
       font-weight: normal;
-      margin-top: 260px;
+      margin-top: 20px;
     }
 
     header p {
@@ -122,6 +137,12 @@
 <body>
 
 <header id="home">
+
+  <!-- LOGO AGORA VISÍVEL -->
+  <div class="logo-box">
+    <img src="geovana-logo.png" alt="Dra. Geovana Senn">
+  </div>
+
   <h1>Dra. Geovana Senn</h1>
   <p>Fisioterapia Pélvica e Obstétrica</p>
   <a href="#agendamento" class="btn">Agendar Atendimento</a>
@@ -138,29 +159,49 @@
 <section id="sobre">
   <h2>Seja bem-vinda!</h2>
   <p>
-    Sou fisioterapeuta formada pela <strong>UNISOCIESC de Joinville/SC</strong> e especialista em
-    <strong>Fisioterapia Pélvica e Uroginecológica</strong> pela <strong>Faculdade Inspirar</strong>.
+    É um prazer ter você aqui! Sou fisioterapeuta formada pela <strong>UNISOCIESC de Joinville/SC</strong> 
+    e especialista em <strong>Fisioterapia Pélvica e Uroginecológica</strong> pela <strong>Faculdade Inspirar</strong>.
+  </p>
+  <p>
+    Ao longo da minha trajetória, busquei diversas formações complementares para oferecer o melhor cuidado às
+    minhas pacientes. Minha paixão pela área surgiu ainda na faculdade, quando percebi como o acompanhamento
+    pélvico é capaz de transformar o bem-estar feminino.
+  </p>
+  <p>
+    Meu propósito é ajudar cada mulher a entender seu próprio corpo de forma única, permitindo uma rotina mais
+    consciente, saudável e com mais qualidade de vida.
   </p>
 
   <div class="frase">
     “Para quem busca saúde, confiança e a liberdade de ser sua melhor versão.”
   </div>
+
+  <p>
+    Meu compromisso é guiar você em cada etapa, oferecendo estratégias para resgatar sua qualidade de vida e
+    autoestima. Cada plano de tratamento é desenhado sob medida para as suas necessidades.
+  </p>
 </section>
 
 <section id="especialidade">
   <h2>Fisioterapia Pélvica</h2>
+  <p>
+    Especialidade da fisioterapia que previne e trata disfunções do assoalho pélvico, responsáveis pela
+    sustentação dos órgãos pélvicos e funções urinárias, intestinais e sexuais.
+  </p>
+
   <ul>
-    <li>Tratamento de incontinência urinária</li>
+    <li>Incontinência urinária e fecal</li>
     <li>Dor durante a relação sexual</li>
     <li>Endometriose e dor pélvica crônica</li>
     <li>Preparação para gestação, parto e pós-parto</li>
-    <li>Melhora da função intestinal e sexual</li>
-    <li>Aumento da qualidade de vida</li>
+    <li>Melhora da função intestinal</li>
+    <li>Aumento do prazer e da qualidade de vida</li>
   </ul>
 </section>
 
 <section id="agendamento">
   <h2>Agendamento</h2>
+  <p>Atendimento humanizado e personalizado em domicílio.</p>
   <a href="https://wa.me/5547992283834" target="_blank" class="btn">WhatsApp</a>
   <a href="https://www.instagram.com/fisiogeovanasenn/" target="_blank" class="btn">Instagram</a>
 </section>
