@@ -83,11 +83,16 @@
 
         /* Fallback se a imagem não carregar */
         .logo-fallback {
-            display: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             color: var(--rosa-acento);
             font-size: 1.2rem;
             font-weight: bold;
+            width: 100%;
+            height: 100%;
         }
 
         .logo-circle::after {
@@ -453,8 +458,7 @@
     <header id="home">
         <div class="logo-container">
             <div class="logo-circle">
-                <!-- SUA LOGO - o código tenta vários nomes -->
-                <img id="logo-img" src="logo.png.png" alt="Dra. Geovana Senn - Fisioterapeuta Pélvica">
+                <!-- Logo será carregada pelo JavaScript -->
                 <div id="logo-fallback" class="logo-fallback">
                     <i class="fas fa-spa" style="font-size: 60px; margin-bottom: 15px;"></i><br>
                     Dra. Geovana Senn<br>
@@ -597,51 +601,66 @@
     </footer>
 
     <script>
-        // Sistema que tenta vários nomes para a logo
-        const logo = document.getElementById('logo-img');
-        const fallback = document.getElementById('logo-fallback');
-        
-        // Lista de possíveis nomes para a logo
-        const possibleLogoNames = [
-            'logo.png.png',      // Nome atual
-            'logo.png',          // Sem dupla extensão
-            'geovana-logo.png',  // Outro nome comum
-            'Logo.png',          // Com L maiúsculo
-            'geovana_logo.png',  // Com underline
-            'logotipo.png',      // Nome em português
-            'dra-geovana-logo.png' // Outra possibilidade
-        ];
-        
-        // Função para tentar carregar a logo
-        function tryNextLogo(currentIndex) {
-            if (currentIndex < possibleLogoNames.length - 1) {
-                // Tenta o próximo nome da lista
-                logo.src = possibleLogoNames[currentIndex + 1];
-            } else {
-                // Se todas falharem, mostra o fallback
-                logo.style.display = 'none';
-                fallback.style.display = 'block';
-                console.log('Logo não encontrada. Mostrando fallback.');
-            }
-        }
-        
-        // Quando a imagem falhar ao carregar
-        logo.onerror = function() {
-            // Descobre qual nome estávamos tentando
-            const currentSrc = this.src;
-            const currentName = currentSrc.split('/').pop();
-            const currentIndex = possibleLogoNames.indexOf(currentName);
+        // Sistema inteligente para carregar a logo
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoCircle = document.querySelector('.logo-circle');
+            const fallback = document.getElementById('logo-fallback');
             
-            // Tenta o próximo nome
-            tryNextLogo(currentIndex);
-        };
-        
-        // Quando a imagem carregar com sucesso
-        logo.onload = function() {
-            console.log('Logo carregada com sucesso:', this.src);
-            fallback.style.display = 'none';
-        };
-        
+            // Lista de possíveis nomes para sua logo PNG
+            const possibleLogoNames = [
+                'logo.png.png',      // Nome com dupla extensão
+                'logo.png',          // Sem dupla extensão
+                'geovana-logo.png',  // Nome descritivo
+                'Logo.png',          // Com L maiúsculo
+                'dra-geovana.png',   // Outra possibilidade
+                'minha-logo.png',    // Nome genérico
+                'logotipo.png'       // Em português
+            ];
+            
+            // Tenta carregar cada logo
+            function tryLoadLogo(index) {
+                if (index >= possibleLogoNames.length) {
+                    // Se todas falharem, mantém o fallback
+                    console.log('Nenhuma logo encontrada. Mantendo fallback.');
+                    return;
+                }
+                
+                const logoName = possibleLogoNames[index];
+                const img = new Image();
+                
+                img.onload = function() {
+                    // Logo carregou com sucesso!
+                    console.log('Logo encontrada:', logoName);
+                    
+                    // Cria o elemento img
+                    const logoImg = document.createElement('img');
+                    logoImg.src = logoName;
+                    logoImg.alt = 'Dra. Geovana Senn - Fisioterapeuta Pélvica';
+                    logoImg.style.cssText = 'max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 50%; display: block;';
+                    
+                    // Remove o fallback e adiciona a logo
+                    fallback.style.display = 'none';
+                    logoCircle.insertBefore(logoImg, fallback);
+                };
+                
+                img.onerror = function() {
+                    // Esta logo não existe, tenta a próxima
+                    console.log('Tentando próxima logo...');
+                    tryLoadLogo(index + 1);
+                };
+                
+                // Tenta carregar a logo
+                img.src = logoName;
+            }
+            
+            // Inicia o processo de carregamento
+            tryLoadLogo(0);
+            
+            // Mostra mensagem de debug
+            console.log('Procurando logo... Verifique se seu arquivo está na mesma pasta que index.html');
+            console.log('Possíveis nomes:', possibleLogoNames);
+        });
+
         // Suavizar rolagem dos links âncora
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
