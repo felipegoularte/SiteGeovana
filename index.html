@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geovana Senn | Fisioterapia Pélvica</title>
+  <title>Dra. Geovana Senn | Fisioterapia Pélvica e Obstétrica</title>
 
   <style>
-    /* 🎨 Paleta Rosé Minimalista */
     :root {
       --rosa-principal: #D8A7A0;
       --rosa-escuro: #C48B85;
@@ -16,42 +15,37 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Arial', sans-serif;
-      background: var(--fundo-claro) url('geovana-logo.png') no-repeat center fixed;
-      background-size: 40%;
+      font-family: Arial, sans-serif;
+      background: var(--fundo-claro);
       color: var(--texto);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    /* 🎀 Header com logo de fundo */
     header {
-      background: url('geovana-logo.png') no-repeat center/contain, var(--fundo-claro);
-      padding: 140px 20px 120px;
+      background: var(--fundo-claro);
+      padding: 120px 20px 100px;
       text-align: center;
-      color: var(--texto);
     }
 
     header img {
       width: 180px;
-      margin-bottom: 15px;
-      opacity: 0.95;
+      margin-bottom: 20px;
     }
 
     header h1 {
       font-size: 2.8rem;
       font-weight: normal;
-      color: var(--texto);
     }
 
     header p {
-      margin-top: 8px;
       font-size: 1.2rem;
       color: var(--rosa-escuro);
       letter-spacing: 1px;
+      margin-bottom: 20px;
     }
 
-    /* Menu Fino e Elegante */
     nav {
       display: flex;
       justify-content: center;
@@ -68,8 +62,9 @@
       text-decoration: none;
       color: var(--texto);
       font-weight: bold;
-      transition: .3s ease;
+      transition: .3s;
     }
+
     nav a:hover { color: var(--rosa-escuro); }
 
     section {
@@ -78,7 +73,28 @@
       margin: auto;
     }
 
-    /* Botões rosé */
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--rosa-escuro);
+    }
+
+    ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .frase {
+      font-style: italic;
+      text-align: center;
+      margin: 40px 0;
+      color: var(--rosa-escuro);
+    }
+
     .btn {
       display: inline-block;
       padding: 14px 28px;
@@ -88,8 +104,9 @@
       border-radius: 6px;
       font-weight: bold;
       margin: 8px;
-      transition: .3s ease;
+      transition: .3s;
     }
+
     .btn:hover { background: var(--rosa-escuro); }
 
     footer {
@@ -105,58 +122,93 @@
 
 <body>
 
-  <!-- LOGO PRINCIPAL CENTRAL -->
-  <header id="home">
-    <img src="geovana-logo.png" alt="Logo Geovana Senn">
-    <h1>Geovana Senn</h1>
-    <p>Fisioterapeuta Pélvica</p>
-    <a href="#agendamento" class="btn">Agendar Atendimento</a>
-  </header>
+<header id="home">
+  <img src="geovana-logo.png" alt="Dra. Geovana Senn">
+  <h1>Dra. Geovana Senn</h1>
+  <p>Fisioterapia Pélvica e Obstétrica</p>
+  <a href="#agendamento" class="btn">Agendar Atendimento</a>
+</header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#agendamento">Agendamento</a>
-    <a href="#contato">Contato</a>
-  </nav>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#especialidade">Especialidade</a>
+  <a href="#agendamento">Agendamento</a>
+  <a href="#contato">Contato</a>
+</nav>
 
-  <section id="sobre">
-    <h2>Sobre Mim</h2>
-    <p>
-      Sou fisioterapeuta especializada em Fisioterapia Pélvica e Obstétrica, dedicada ao cuidado da mulher em todas as fases da vida.
-      Minha missão é promover saúde, autoconhecimento e confiança através de acolhimento e tratamento humanizado.
-    </p>
-  </section>
+<section id="sobre">
+  <h2>Seja bem-vinda!</h2>
+  <p>
+    É um prazer ter você aqui! Sou fisioterapeuta formada pela <strong>UNISOCIESC de Joinville/SC</strong> 
+    e especialista em <strong>Fisioterapia Pélvica e Uroginecológica</strong> pela <strong>Faculdade Inspirar</strong>.
+  </p>
+  <p>
+    Ao longo da minha trajetória, busquei diversas formações complementares para oferecer um cuidado completo,
+    individualizado e baseado em evidências. Minha paixão pela área surgiu ainda na graduação, quando percebi
+    o poder transformador do acompanhamento pélvico na saúde e bem-estar feminino.
+  </p>
+  <p>
+    Meu propósito é ajudar cada mulher a compreender seu corpo de forma única, promovendo mais consciência,
+    conforto, qualidade de vida e prazer em todas as fases da jornada feminina.
+  </p>
 
-  <section id="servicos">
-    <h2>Atuação em Fisioterapia Pélvica</h2>
-    <ul>
-      <li>Incontinência urinária e fecal</li>
-      <li>Dor durante a relação sexual</li>
-      <li>Endometriose e dor pélvica crônica</li>
-      <li>Preparação para parto e pós-parto</li>
-      <li>Reabilitação pós-cirúrgica pélvica</li>
-      <li>Bexiga hiperativa e disfunções intestinais</li>
-    </ul>
-  </section>
+  <div class="frase">
+    “Para quem busca saúde, confiança e a liberdade de ser sua melhor versão.”
+  </div>
 
-  <section id="agendamento">
-    <h2>Agendamento</h2>
-    <p>Atendimento personalizado e humanizado em domicílio.</p>
-    <a href="https://wa.me/5547992283834" target="_blank" class="btn">WhatsApp</a>
-    <a href="https://www.instagram.com/fisiogeovanasenn/" target="_blank" class="btn">Instagram</a>
-  </section>
+  <p>
+    Acredito em um cuidado exclusivo: cada corpo conta uma história, por isso, seu plano de tratamento é
+    desenhado sob medida para suas necessidades. Nosso objetivo juntas é conquistar uma rotina livre de
+    incômodos, priorizando seu conforto, autoestima e satisfação pessoal.
+  </p>
+</section>
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p><strong>Email:</strong> fisiopelvicageovana@gmail.com</p>
-    <a href="mailto:fisiopelvicageovana@gmail.com" class="btn">Enviar Email</a>
-  </section>
+<section id="especialidade">
+  <h2>Fisioterapia Pélvica</h2>
+  <p>
+    A fisioterapia pélvica é uma especialidade da fisioterapia voltada à prevenção e tratamento das disfunções
+    do assoalho pélvico — um conjunto de músculos, fáscias e ligamentos responsáveis pela sustentação dos
+    órgãos pélvicos, como bexiga, útero e reto.
+  </p>
+  <p>
+    Esses músculos desempenham funções essenciais, como o controle da micção, evacuação e função sexual,
+    sendo fundamentais para a qualidade de vida da mulher.
+  </p>
 
-  <footer>
-    © 2025 — Geovana Senn. Todos os direitos reservados.
-  </footer>
+  <h3>Benefícios da Fisioterapia Pélvica</h3>
+  <ul>
+    <li>Maior autoconhecimento corporal</li>
+    <li>Melhora da sustentação dos órgãos pélvicos</li>
+    <li>Prevenção e tratamento da incontinência urinária</li>
+    <li>Tratamento da dor durante a relação sexual</li>
+    <li>Preparação para gestação, parto e pós-parto</li>
+    <li>Melhora dos sintomas da bexiga hiperativa</li>
+    <li>Melhora da função intestinal</li>
+    <li>Alívio dos sintomas da menopausa</li>
+    <li>Auxílio no tratamento da endometriose</li>
+    <li>Aumento da lubrificação e do prazer sexual</li>
+    <li>Melhora da intensidade e qualidade do orgasmo</li>
+    <li>Melhora significativa da qualidade de vida</li>
+  </ul>
+</section>
+
+<section id="agendamento">
+  <h2>Agendamento</h2>
+  <p>Atendimento humanizado e personalizado em domicílio.</p>
+  <a href="https://wa.me/5547992283834" target="_blank" class="btn">WhatsApp</a>
+  <a href="https://www.instagram.com/fisiogeovanasenn/" target="_blank" class="btn">Instagram</a>
+</section>
+
+<section id="contato">
+  <h2>Contato</h2>
+  <p><strong>Email:</strong> fisiopelvicageovana@gmail.com</p>
+  <a href="mailto:fisiopelvicageovana@gmail.com" class="btn">Enviar Email</a>
+</section>
+
+<footer>
+  © 2025 — Dra. Geovana Senn. Todos os direitos reservados.
+</footer>
 
 </body>
 </html>
