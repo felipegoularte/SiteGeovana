@@ -58,8 +58,8 @@
         }
 
         .logo-circle {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             background-color: var(--branco);
             border-radius: 50%;
             margin: 0 auto 25px;
@@ -69,18 +69,21 @@
             box-shadow: 0 10px 30px rgba(216, 167, 160, 0.15);
             border: 1px solid var(--rosa-suave);
             position: relative;
+            padding: 20px;
         }
 
-        .logo-circle i {
-            font-size: 70px;
-            color: var(--rosa-acento);
+        .logo-circle img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
         }
 
         .logo-circle::after {
             content: "";
             position: absolute;
-            width: 200px;
-            height: 200px;
+            width: 240px;
+            height: 240px;
             border-radius: 50%;
             border: 2px dashed var(--rosa-acento);
             opacity: 0.3;
@@ -407,6 +410,11 @@
                 width: 100%;
                 max-width: 300px;
             }
+            
+            .logo-circle {
+                width: 180px;
+                height: 180px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -419,12 +427,8 @@
             }
             
             .logo-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .logo-circle i {
-                font-size: 50px;
+                width: 150px;
+                height: 150px;
             }
             
             header {
@@ -438,7 +442,8 @@
     <header id="home">
         <div class="logo-container">
             <div class="logo-circle">
-                <i class="fas fa-spa"></i>
+                <!-- SUA LOGO AQUI -->
+                <img src="5 (1).png" alt="Dra. Geovana Senn - Fisioterapeuta Pélvica">
             </div>
             <h1 class="titulo-principal">Dra. Geovana Senn</h1>
             <p class="subtitulo">Fisioterapia Pélvica e Obstétrica</p>
