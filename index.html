@@ -28,15 +28,41 @@
             background-color: var(--branco);
             color: var(--cinza-texto);
             line-height: 1.6;
+            /* Logo como fundo */
+            background-image: url('logo.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: var(--branco);
+            min-height: 100vh;
+        }
+
+        /* Opcional: Para deixar o logo de fundo mais suave */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('logo.png');
+            background-size: 60%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* Header principal */
         header {
-            background: linear-gradient(135deg, var(--rosa-suave) 0%, var(--branco) 100%);
+            background: linear-gradient(135deg, rgba(248, 232, 232, 0.85) 0%, rgba(255, 255, 255, 0.9) 100%);
             padding: 100px 20px 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(3px);
         }
 
         header::before {
@@ -67,42 +93,33 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 10px 30px rgba(216, 167, 160, 0.15);
-            border: 1px solid var(--rosa-suave);
+            border: 5px solid var(--rosa-acento);
             position: relative;
-            padding: 15px;
+            padding: 5px;
             overflow: hidden;
         }
 
-        .logo-circle img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .professional-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 50%;
             display: block;
         }
 
-        /* Fallback se a imagem não carregar */
-        .logo-fallback {
+        /* Fallback se a foto não carregar */
+        .photo-fallback {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--rosa-acento);
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
             width: 100%;
             height: 100%;
-        }
-
-        .logo-circle::after {
-            content: "";
-            position: absolute;
-            width: 270px;
-            height: 270px;
-            border-radius: 50%;
-            border: 2px dashed var(--rosa-acento);
-            opacity: 0.3;
+            background-color: var(--rosa-suave);
         }
 
         .titulo-principal {
@@ -150,6 +167,8 @@
             z-index: 100;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
             border-bottom: 1px solid var(--rosa-suave);
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .nav-container {
@@ -195,6 +214,9 @@
             padding: 80px 20px;
             max-width: 1000px;
             margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            margin-bottom: 30px;
         }
 
         .section-header {
@@ -375,6 +397,7 @@
             text-align: center;
             color: var(--cinza-texto);
             margin-top: 60px;
+            background-color: rgba(248, 232, 232, 0.9);
         }
 
         .footer-content {
@@ -397,6 +420,11 @@
 
         /* Responsividade */
         @media (max-width: 768px) {
+            body::before {
+                background-size: 80%;
+                opacity: 0.05;
+            }
+            
             .titulo-principal {
                 font-size: 2.2rem;
             }
@@ -450,6 +478,10 @@
             header {
                 padding: 80px 20px 40px;
             }
+            
+            body {
+                background-size: 80%;
+            }
         }
     </style>
 </head>
@@ -458,12 +490,12 @@
     <header id="home">
         <div class="logo-container">
             <div class="logo-circle">
-                <!-- Logo será carregada pelo JavaScript -->
-                <div id="logo-fallback" class="logo-fallback">
-                    <i class="fas fa-spa" style="font-size: 60px; margin-bottom: 15px;"></i><br>
-                    Dra. Geovana Senn<br>
-                    <small>Fisioterapia Pélvica</small>
+                <!-- Foto profissional -->
+                <div id="photo-fallback" class="photo-fallback">
+                    <i class="fas fa-user-md" style="font-size: 60px; margin-bottom: 15px;"></i><br>
+                    Dra. Geovana Senn
                 </div>
+                <!-- A foto será carregada pelo JavaScript -->
             </div>
             <h1 class="titulo-principal">Dra. Geovana Senn</h1>
             <p class="subtitulo">Fisioterapia Pélvica e Obstétrica</p>
@@ -601,64 +633,65 @@
     </footer>
 
     <script>
-        // Sistema inteligente para carregar a logo
+        // Carregar a foto profissional
         document.addEventListener('DOMContentLoaded', function() {
             const logoCircle = document.querySelector('.logo-circle');
-            const fallback = document.getElementById('logo-fallback');
+            const fallback = document.getElementById('photo-fallback');
             
-            // Lista de possíveis nomes para sua logo PNG
-            const possibleLogoNames = [
-                'logo.png.png',      // Nome com dupla extensão
-                'logo.png',          // Sem dupla extensão
-                'geovana-logo.png',  // Nome descritivo
-                'Logo.png',          // Com L maiúsculo
-                'dra-geovana.png',   // Outra possibilidade
-                'minha-logo.png',    // Nome genérico
-                'logotipo.png'       // Em português
+            // Possíveis nomes para sua foto profissional
+            const possiblePhotoNames = [
+                'foto/sua-foto-profissional.jpg',
+                'foto/foto-profissional.jpg',
+                'foto/geovana-profissional.jpg',
+                'foto/dra-geovana.jpg',
+                'foto/minha-foto.jpg',
+                'sua-foto-profissional.jpg', // Caso esteja na raiz
+                'foto-profissional.jpg'      // Caso esteja na raiz
             ];
             
-            // Tenta carregar cada logo
-            function tryLoadLogo(index) {
-                if (index >= possibleLogoNames.length) {
+            // Tenta carregar cada foto
+            function tryLoadPhoto(index) {
+                if (index >= possiblePhotoNames.length) {
                     // Se todas falharem, mantém o fallback
-                    console.log('Nenhuma logo encontrada. Mantendo fallback.');
+                    console.log('Nenhuma foto encontrada. Mantendo fallback.');
                     return;
                 }
                 
-                const logoName = possibleLogoNames[index];
+                const photoName = possiblePhotoNames[index];
                 const img = new Image();
                 
                 img.onload = function() {
-                    // Logo carregou com sucesso!
-                    console.log('Logo encontrada:', logoName);
+                    // Foto carregou com sucesso!
+                    console.log('Foto encontrada:', photoName);
                     
                     // Cria o elemento img
-                    const logoImg = document.createElement('img');
-                    logoImg.src = logoName;
-                    logoImg.alt = 'Dra. Geovana Senn - Fisioterapeuta Pélvica';
-                    logoImg.style.cssText = 'max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 50%; display: block;';
+                    const photoImg = document.createElement('img');
+                    photoImg.src = photoName;
+                    photoImg.alt = 'Dra. Geovana Senn - Fisioterapeuta Pélvica';
+                    photoImg.className = 'professional-photo';
                     
-                    // Remove o fallback e adiciona a logo
+                    // Remove o fallback e adiciona a foto
                     fallback.style.display = 'none';
-                    logoCircle.insertBefore(logoImg, fallback);
+                    logoCircle.insertBefore(photoImg, fallback);
                 };
                 
                 img.onerror = function() {
-                    // Esta logo não existe, tenta a próxima
-                    console.log('Tentando próxima logo...');
-                    tryLoadLogo(index + 1);
+                    // Esta foto não existe, tenta a próxima
+                    console.log('Tentando próxima foto...');
+                    tryLoadPhoto(index + 1);
                 };
                 
-                // Tenta carregar a logo
-                img.src = logoName;
+                // Tenta carregar a foto
+                img.src = photoName;
             }
             
             // Inicia o processo de carregamento
-            tryLoadLogo(0);
+            tryLoadPhoto(0);
             
             // Mostra mensagem de debug
-            console.log('Procurando logo... Verifique se seu arquivo está na mesma pasta que index.html');
-            console.log('Possíveis nomes:', possibleLogoNames);
+            console.log('Procurando foto profissional...');
+            console.log('Possíveis nomes:', possiblePhotoNames);
+            console.log('Certifique-se de que a foto está na pasta "foto/" com um dos nomes acima');
         });
 
         // Suavizar rolagem dos links âncora
